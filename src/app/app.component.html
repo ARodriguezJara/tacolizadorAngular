@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soy un mapa</title>
+</head>
+<body>
+  <google-map
+  (mapClick)="click($event)"
+  height="500px"
+  width="100%"
+  [zoom]="zoom"
+  [center]="center"
+  [options]="options">
+  <map-marker
+  *ngFor="let marker of markers"
+  [position]="marker.position"
+  [label]="marker.label"
+  [title]="marker.title"
+  [options]="marker.options"></map-marker>
+</google-map>
+  <div>
+    <button (click)="zoomIn()" >+</button>
+    <button (click)="zoomOut()" >-</button>
+    <button (click)="addMarker()" >Add</button>
+
+  </div>
+
+  <table mat-table [dataSource]="taquerias">
+    
+  </table>
+
+  <div *ngFor="let taque of taquerias">
+    <span class="badge">{{taque.nombre}} </span>
+    <span class="badge">{{taque.calidad}} </span>
+    <span class="badge">{{taque.precio}} </span>
+    <span class="badge">{{taque.comentario}} </span>
+    <span class="badge">{{taque.pagina_fb}} </span>
+
+  </div>
+</body>
+</html>
